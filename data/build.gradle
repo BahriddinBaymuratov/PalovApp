@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.example.data'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation Dependencies.KotlinVersion
+    implementation Dependencies.LifeCycleKtx
+    implementation Dependencies.AppCompat
+    implementation project(path: ':domain')
+    testImplementation Dependencies.JUnitTest
+    androidTestImplementation Dependencies.ExtUnit
+    androidTestImplementation Dependencies.Espresso
+
+
+    // Retrofit
+    implementation Dependencies.Retrofit
+    implementation Dependencies.GsonConverter
+    implementation Dependencies.Okhttp
+    implementation Dependencies.Interceptor
+
+    // Room
+    implementation Dependencies.RoomRun
+    implementation Dependencies.RoomKtx
+    annotationProcessor Dependencies.RoomAn
+    kapt Dependencies.RoomComp
+
+    //Dagger - Hilt
+    implementation Dependencies.Hilt
+    kapt Dependencies.KaptHilt
+    implementation Dependencies.HiltVM
+    kapt Dependencies.CompHilt
+    implementation Dependencies.HiltNavigation
+
+    //Preferences DataStore
+    implementation Dependencies.DataStore
+}

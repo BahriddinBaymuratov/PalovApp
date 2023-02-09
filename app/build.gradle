@@ -1,0 +1,135 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    namespace 'com.example.palov'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.palov"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.1.1'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+
+    implementation Dependencies.KotlinVersion
+    implementation Dependencies.LifeCycleKtx
+    implementation Dependencies.AppCompat
+    implementation Dependencies.ComposeUi
+    implementation Dependencies.CompPreview
+    implementation Dependencies.MaterialDesign
+    implementation project(path: ':data')
+    implementation project(path: ':domain')
+    testImplementation Dependencies.JUnitTest
+    androidTestImplementation Dependencies.ExtUnit
+    androidTestImplementation Dependencies.Espresso
+    androidTestImplementation Dependencies.ComposeTest
+    debugImplementation Dependencies.ComposeTool
+    debugImplementation Dependencies.TestMan
+
+
+
+    implementation(Dependencies.ComposeNavigation)
+    // Paging Compose
+    implementation Dependencies.ComposePager
+    implementation Dependencies.PagerIndicator
+
+    // Coroutines
+    implementation Dependencies.Coroutines
+    implementation Dependencies.AndroidCoroutine
+
+    // Coroutine Lifecycle Scopes
+    implementation Dependencies.LifecycleScope
+    implementation Dependencies.RuntimeScope
+    // Retrofit
+    implementation Dependencies.Retrofit
+    implementation Dependencies.GsonConverter
+    implementation Dependencies.Okhttp
+    implementation Dependencies.Interceptor
+    // Coil
+    implementation Dependencies.Coil
+    implementation Dependencies.AccCoil
+
+//    Dagger - Hilt
+    implementation Dependencies.Hilt
+    kapt Dependencies.KaptHilt
+    implementation Dependencies.HiltVM
+    kapt Dependencies.CompHilt
+    implementation Dependencies.HiltNavigation
+//    implementation "com.google.dagger:hilt-android:2.40.5"
+//    kapt "com.google.dagger:hilt-android-compiler:2.40.5"
+//    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+//    kapt 'androidx.hilt:hilt-compiler:1.0.0'
+
+    // Room
+    implementation Dependencies.RoomRun
+    implementation Dependencies.RoomKtx
+    annotationProcessor Dependencies.RoomAn
+    kapt Dependencies.RoomComp
+
+    // Jsoup
+    implementation Dependencies.Jsoup
+
+    // Lottie
+    implementation Dependencies.Lottie
+
+    // Test
+    testImplementation Dependencies.CoreTest
+    testImplementation Dependencies.JUnitTest
+    testImplementation Dependencies.ArchTest
+    testImplementation Dependencies.CoroutineTest
+    androidTestImplementation Dependencies.Truth
+    debugImplementation Dependencies.ComposeUITest
+
+    androidTestImplementation Dependencies.HiltTest
+    kaptAndroidTest Dependencies.HiltAndroidTest
+    androidTestImplementation Dependencies.JUnitTest
+    androidTestImplementation Dependencies.CoroutineTest
+    androidTestImplementation Dependencies.ArchTest
+    androidTestImplementation Dependencies.KtxTest
+    androidTestImplementation Dependencies.ExtUnitTest
+    androidTestImplementation Dependencies.Runner
+    androidTestImplementation Dependencies.NavigationTesting
+
+    implementation Dependencies.Retrofit
+}

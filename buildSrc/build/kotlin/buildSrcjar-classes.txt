@@ -1,0 +1,1 @@
+C:\Users\bahri\AndroidStudioProjects\Palov\buildSrc\build\classes\kotlin\main\Dependencies.class;C:\Users\bahri\AndroidStudioProjects\Palov\buildSrc\build\classes\kotlin\main\Versions.class
